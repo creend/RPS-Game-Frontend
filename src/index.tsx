@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Root from './views/Root';
 import reportWebVitals from './reportWebVitals';
+import GameProvider from './providers/GameProvider';
+import { SocketProvider } from './providers/SocketProvider';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <GameProvider>
+      <SocketProvider>
+        <Root />
+      </SocketProvider>
+    </GameProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
