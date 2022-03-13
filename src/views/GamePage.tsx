@@ -39,7 +39,6 @@ const GamePage = () => {
 
   const handleOnJoin = useCallback(
     (game: Game) => {
-      console.log(game);
       const enemy = game.clients.find((client) => client.id !== clientId);
       if (enemy) {
         setGameStarted(true);
@@ -101,6 +100,10 @@ const GamePage = () => {
     };
     /*eslint-disable react-hooks/exhaustive-deps*/
   }, []);
+
+  useEffect(() => {
+    document.title = `RPS Game | ${!gameStarted ? 'Waiting' : 'Started'}`;
+  }, [gameStarted]);
 
   const handlePick = (pick: Pick) => {
     socket.emit('pick', { clientId, gameId, pick });

@@ -28,6 +28,7 @@ const Home = () => {
 
   useEffect(() => {
     socket.on('create', handleOnCreate);
+    document.title = 'RPS Game | Home Page';
     return () => {
       socket.off('create', handleOnCreate);
     };

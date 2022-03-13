@@ -1,7 +1,9 @@
 import React from 'react';
 import { io } from 'socket.io-client';
 
-const socket = io('http://localhost:8000/game');
+const socket = io(
+  process.env.NODE_ENV === 'development' ? 'ws://localhost:8000/game' : '/game'
+);
 
 export const SocketContext = React.createContext({
   socket,
